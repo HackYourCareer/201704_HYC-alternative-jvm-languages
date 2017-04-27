@@ -1,0 +1,34 @@
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Tests
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile group: 'org.assertj', name: 'assertj-core', version: '3.6.2'
+	testCompile("org.jetbrains.spek:spek-api:1.1.0")
+	testCompile("org.junit.platform:junit-platform-runner:1.0.0-M3")
+	testRuntime("org.jetbrains.spek:spek-junit-platform-engine:1.1.0")
+
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+	compile group: 'com.google.guava', name: 'guava', version: '21.0'
+}
